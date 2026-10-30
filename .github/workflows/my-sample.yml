@@ -1,1 +1,25 @@
+name: my-sample
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+  workflow_dispatch: 
+
+jobs:
+  builds:
+    runs-on: ubuntu-slim
+
+    steps: 
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Run a small script 
+        run: echo Hello world
+      - name: Run multi command script
+        run: |
+          echo Add other actions to the build
+        
+    
+    
 
