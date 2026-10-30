@@ -1,2 +1,33 @@
+name: secured workflow
 
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  sample_build:
+    runs-on: ubuntu-slim
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout action
+        uses: actions/checkout@v4
+
+      - name: Build NPM
+        run: npm install
+
+      - name: Test
+        run: echo "This is a test exection"
+
+      - name: Artifact upload
+        uses: actions/upload-artifact@v7
+        with:
+          name: Artifact-1
+          retention-days: 7
+          path: |
+            package*
+    
+
+    
 
